@@ -1,11 +1,17 @@
 stages:
   load_dataset:
-   cmd: python src/data/load_dataset.py --config=params.yaml
-   deps:
-   - src/data/load_dataset.py
-   - data/initial/labeled.csv
-   out:
-   - data/raw/data.csv
+    cmd: python src/data/load_dataset.py --config=params.yaml
+    deps:
+    - src/data/load_dataset.py
+    - data/initial/labeled.csv
+    outs:
+    - data/raw/data.csv
 
   clean_dataset:
-   cmd: python src/data/clean_dataset.py --config=params.yaml
+    cmd: python src/data/clean_dataset.py --config=params.yaml
+    deps:
+    - src/data/clean_dataset.py
+    - data/raw/data.csv
+    - src/data/preprocessing.py
+    outs:
+    - data/interim/data_clean.csv

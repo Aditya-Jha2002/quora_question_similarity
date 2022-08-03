@@ -1,13 +1,9 @@
 # -*- coding: utf-8 -*-
 import argparse
 import os
-import utils
+from src import utils
 
-import ntlk
-nltk.download("punkt")
-from ntlk.tokenize import word_tokenizer
-
-from data.preprocessing_sripts import preprocess_text_column
+from src.data.preprocessing import preprocess_text_column
 
 def remove_space(text):
     text = text.strip()

@@ -1,0 +1,31 @@
+schema: '2.0'
+stages:
+  load_dataset:
+    cmd: python src/data/load_dataset.py --config=params.yaml
+    deps:
+    - path: data/initial/labeled.csv
+      md5: 5719a02d98c3bcc19caa03d3bf48eebc
+      size: 63399110
+    - path: src/data/load_dataset.py
+      md5: a37aede7dd3d970e95456e8e10f23f80
+      size: 622
+    outs:
+    - path: data/raw/data.csv
+      md5: 5719a02d98c3bcc19caa03d3bf48eebc
+      size: 63399110
+  clean_dataset:
+    cmd: python src/data/clean_dataset.py --config=params.yaml
+    deps:
+    - path: data/raw/data.csv
+      md5: 5719a02d98c3bcc19caa03d3bf48eebc
+      size: 63399110
+    - path: src/data/clean_dataset.py
+      md5: 3a7f49fc499c28ae86acfb21c89f5af2
+      size: 1073
+    - path: src/data/preprocessing.py
+      md5: b79aff92f7ac127ac888c139a2f27691
+      size: 3522
+    outs:
+    - path: data/interim/data_clean.csv
+      md5: 1c9e92dc445c2c912040103eca5489dc
+      size: 36933501
