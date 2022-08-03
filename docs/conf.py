@@ -231,7 +231,7 @@ man_pages = [
 texinfo_documents = [
     ('index', 'quesimiliarity', u'quesimiliarity Documentation',
      u"Aditya Jha", 'quesimiliarity',
-     'Creates a Machine Learning and Natural Language Processing based model, and serves it up via FastA. The API takes 2 questions as input, and returns it's similarity score', 'Miscellaneous'),
+     "Creates a Machine Learning and Natural Language Processing based model, and serves it up via FastAPI. The API takes 2 questions as input, and returns it's similarity score", 'Miscellaneous'),
 ]
 
 # Documents to append as an appendix to all manuals.

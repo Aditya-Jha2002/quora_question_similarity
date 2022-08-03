@@ -1,0 +1,38 @@
+base:
+  project: quesimilarity
+  random_state: 42
+  target_col: is_duplicate
+
+data_source:
+  labeled_source: data/initial/labeled.csv
+  unlabeled_source: data/initial/unlabeled.csv
+
+load_dataset:
+  raw_dataset_path: data/raw/data.csv
+
+clean_dataset:
+  clean_dataset_path: data/interim/data_clean.csv
+
+build_features:
+  feature_dataset_path: data/interim/data_features.csv
+
+split_dataset:
+  train_path: data/processed/train.csv
+  test_path: data/processed/test.csv
+  dev_size: 0.1
+  test_size: 0.1
+
+estimators:
+  ElasticNet:
+    params:
+      # alpha: 0.88
+      # l1_ratio: 0.89
+      alpha: 0.9
+      l1_ratio: 0.4
+
+model_dir: saved_models
+
+reports:
+  params: report/params.json
+  scores: report/scores.json
+
