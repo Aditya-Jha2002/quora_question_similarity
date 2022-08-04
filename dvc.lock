@@ -7,8 +7,11 @@ stages:
       md5: 5719a02d98c3bcc19caa03d3bf48eebc
       size: 63399110
     - path: src/data/load_dataset.py
-      md5: a37aede7dd3d970e95456e8e10f23f80
-      size: 622
+      md5: a06b899e6a2b23cb2fee793447d161c1
+      size: 626
+    - path: src/utils.py
+      md5: 166d2649f7ed8166667926ce8b8beffb
+      size: 502
     outs:
     - path: data/raw/data.csv
       md5: 5719a02d98c3bcc19caa03d3bf48eebc
@@ -20,12 +23,31 @@ stages:
       md5: 5719a02d98c3bcc19caa03d3bf48eebc
       size: 63399110
     - path: src/data/clean_dataset.py
-      md5: 3a7f49fc499c28ae86acfb21c89f5af2
-      size: 1073
+      md5: 469ef4183169251db6955c7426675e63
+      size: 1138
     - path: src/data/preprocessing.py
-      md5: b79aff92f7ac127ac888c139a2f27691
-      size: 3522
+      md5: 1a4c52f5f5e3eeaebb752d4750ac49ae
+      size: 3842
+    - path: src/utils.py
+      md5: 166d2649f7ed8166667926ce8b8beffb
+      size: 502
     outs:
     - path: data/interim/data_clean.csv
       md5: 1c9e92dc445c2c912040103eca5489dc
       size: 36933501
+  build_features:
+    cmd: python src/features/build_features.py --config=params.yaml
+    deps:
+    - path: data/interim/data_clean.csv
+      md5: 1c9e92dc445c2c912040103eca5489dc
+      size: 36933501
+    - path: src/features/build_features.py
+      md5: 18ac21133f6df65c73ab2d916ad406d9
+      size: 1990
+    - path: src/utils.py
+      md5: 166d2649f7ed8166667926ce8b8beffb
+      size: 502
+    outs:
+    - path: data/interim/data_features.csv
+      md5: 9d8b4784ca0516279dcc4e2f4effb538
+      size: 87242197

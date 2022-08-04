@@ -8,9 +8,7 @@ def read_params(config_path):
         config = yaml.safe_load(yaml_file)
     return config
 
-def get_data(config_path):
-    config = read_params(config_path)
-    data_path = config["data_source"]["labeled_source"]
+def get_data(data_path):
     df = pd.read_csv(data_path, sep=",", encoding="utf-8")
     return df
 
