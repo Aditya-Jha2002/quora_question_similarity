@@ -24,15 +24,13 @@ split_dataset:
   test_size: 0.1
 
 estimators:
-  ElasticNet:
+  LogisticRegression:
     params:
-      # alpha: 0.88
-      # l1_ratio: 0.89
-      alpha: 0.9
+      C: 1.0
       l1_ratio: 0.4
 
-model_dir: saved_models
+model_dir: models
 
 reports:
-  params: report/params.json
-  scores: report/scores.json
+  params: reports/params.json
+  scores: reports/scores.json

@@ -37,3 +37,20 @@ stages:
       - data/processed/train.csv
       - data/processed/dev.csv
       - data/processed/test.csv
+
+  train_and_evaluate:
+    cmd: python src/models/train_and_evaluate_model.py --config=params.yaml
+    deps:
+      - data/processed/train.csv
+      - data/processed/dev.csv
+      - src/models/train_and_evaluate_model.py
+    params:
+      - estimators.LogisticRegression.params.C
+      - estimators.LogisticRegression.params.l1_ratio
+    metrics:
+      - reports/scores.json:
+          cache: false
+      - reports/params.json:
+          cache: false
+    outs:
+      - models/model.joblib

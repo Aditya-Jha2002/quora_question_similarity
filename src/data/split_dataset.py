@@ -8,8 +8,8 @@ from src.data.preprocessing import preprocess_text_column
 
 
 def split_dataset(config_path):
-    """ Runs preprocessing scripts to turn raw data from (../raw) into
-        cleaned and pre-processed data ready to be feature engineered on (saved in ../interim).
+    """ Runs scripts to split the features data from (../into) into
+        train, dev and test datasets ready to be fed into models (saved in ../processed).
     """
     config = utils.read_params(config_path)
     feature_data_path = config["build_features"]["feature_dataset_path"]

@@ -58,8 +58,8 @@ stages:
       md5: 9d8b4784ca0516279dcc4e2f4effb538
       size: 87242197
     - path: src/data/split_dataset.py
-      md5: d2654029aca36e5cd1ed7e047deba9c2
-      size: 1513
+      md5: 7917b2720ce3cafb18a1fa2605825625
+      size: 1504
     - path: src/utils.py
       md5: 166d2649f7ed8166667926ce8b8beffb
       size: 502
@@ -73,3 +73,29 @@ stages:
     - path: data/processed/train.csv
       md5: 23c43faa22ec46040290fa1b95d91b2d
       size: 70657415
+  train_and_evaluate:
+    cmd: python src/models/train_and_evaluate_model.py --config=params.yaml
+    deps:
+    - path: data/processed/dev.csv
+      md5: ae4d6c13e53149f914b21f54050709a6
+      size: 7859097
+    - path: data/processed/train.csv
+      md5: 23c43faa22ec46040290fa1b95d91b2d
+      size: 70657415
+    - path: src/models/train_and_evaluate_model.py
+      md5: 2cf34013707a39192e8cc8c774e16773
+      size: 2917
+    params:
+      params.yaml:
+        estimators.LogisticRegression.params.C: 1.0
+        estimators.LogisticRegression.params.l1_ratio: 0.4
+    outs:
+    - path: models/model.joblib
+      md5: 4427f631af209bfd6266e1b8576813c6
+      size: 1421
+    - path: reports/params.json
+      md5: c4c0de61d2aa93ae07d714b7f5732a72
+      size: 37
+    - path: reports/scores.json
+      md5: 217c0ce67cadde7a0ce59520a6839780
+      size: 157
