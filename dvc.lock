@@ -7,8 +7,8 @@ stages:
       md5: 5719a02d98c3bcc19caa03d3bf48eebc
       size: 63399110
     - path: src/data/load_dataset.py
-      md5: a06b899e6a2b23cb2fee793447d161c1
-      size: 626
+      md5: 9a5e6eb412c6ff0fdae97dbfb4c12f0d
+      size: 687
     - path: src/utils.py
       md5: 166d2649f7ed8166667926ce8b8beffb
       size: 502
@@ -23,8 +23,8 @@ stages:
       md5: 5719a02d98c3bcc19caa03d3bf48eebc
       size: 63399110
     - path: src/data/clean_dataset.py
-      md5: 469ef4183169251db6955c7426675e63
-      size: 1138
+      md5: 21bebba0ddca38ecb7cb23e7e8db27cf
+      size: 1169
     - path: src/data/preprocessing.py
       md5: 1a4c52f5f5e3eeaebb752d4750ac49ae
       size: 3842
@@ -42,8 +42,8 @@ stages:
       md5: 1c9e92dc445c2c912040103eca5489dc
       size: 36933501
     - path: src/features/build_features.py
-      md5: 18ac21133f6df65c73ab2d916ad406d9
-      size: 1990
+      md5: 6c19cb178386547a91f33129349e1099
+      size: 2029
     - path: src/utils.py
       md5: 166d2649f7ed8166667926ce8b8beffb
       size: 502
@@ -51,3 +51,25 @@ stages:
     - path: data/interim/data_features.csv
       md5: 9d8b4784ca0516279dcc4e2f4effb538
       size: 87242197
+  split_dataset:
+    cmd: python src/data/split_dataset.py --config=params.yaml
+    deps:
+    - path: data/interim/data_features.csv
+      md5: 9d8b4784ca0516279dcc4e2f4effb538
+      size: 87242197
+    - path: src/data/split_dataset.py
+      md5: d2654029aca36e5cd1ed7e047deba9c2
+      size: 1513
+    - path: src/utils.py
+      md5: 166d2649f7ed8166667926ce8b8beffb
+      size: 502
+    outs:
+    - path: data/processed/dev.csv
+      md5: ae4d6c13e53149f914b21f54050709a6
+      size: 7859097
+    - path: data/processed/test.csv
+      md5: 8d69711fb8bc0794268b86127fd9aeea
+      size: 8726029
+    - path: data/processed/train.csv
+      md5: 23c43faa22ec46040290fa1b95d91b2d
+      size: 70657415

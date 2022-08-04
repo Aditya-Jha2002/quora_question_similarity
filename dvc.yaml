@@ -26,3 +26,14 @@ stages:
       - src/utils.py
     outs:
       - data/interim/data_features.csv
+
+  split_dataset:
+    cmd: python src/data/split_dataset.py --config=params.yaml
+    deps:
+      - src/data/split_dataset.py
+      - data/interim/data_features.csv
+      - src/utils.py
+    outs:
+      - data/processed/train.csv
+      - data/processed/dev.csv
+      - data/processed/test.csv

@@ -17,8 +17,9 @@ def clean_dataset(config_path):
         cleaned and pre-processed data ready to be feature engineered on (saved in ../interim).
     """
     config = utils.read_params(config_path)
-    data_path = config["load_dataset"]["raw_dataset_path"]
-    df = utils.get_data(data_path)
+    raw_data_path = config["load_dataset"]["raw_dataset_path"]
+    clean_data_path = config["clean_dataset"]["clean_dataset_path"]
+    df = utils.get_data(raw_data_path)
 
     # Drop all of the null values
     df.dropna(inplace=True)
@@ -28,8 +29,7 @@ def clean_dataset(config_path):
     preprocess_text_column(df, "question2")
 
     # Storing the dataframe to interim folder
-    df.to_csv(config["clean_dataset"]
-              ["clean_dataset_path"], sep=",", index=False)
+    df.to_csv(clean_data_path, sep=",", index=False)
 
 
 if __name__ == '__main__':

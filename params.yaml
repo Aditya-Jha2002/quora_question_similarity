@@ -18,6 +18,7 @@ build_features:
 
 split_dataset:
   train_path: data/processed/train.csv
+  dev_path: data/processed/dev.csv
   test_path: data/processed/test.csv
   dev_size: 0.1
   test_size: 0.1

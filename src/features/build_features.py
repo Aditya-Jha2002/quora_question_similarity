@@ -11,8 +11,9 @@ def build_features(config_path):
         features ready to be trained by a model (saved in ../interim).
     """
     config = utils.read_params(config_path)
-    data_path = config["clean_dataset"]["clean_dataset_path"]
-    df = utils.get_data(data_path)
+    clean_data_path = config["clean_dataset"]["clean_dataset_path"]
+    feature_data_path = config["build_features"]["feature_dataset_path"]
+    df = utils.get_data(clean_data_path)
 
     df.fillna(" ", inplace=True)
 
@@ -45,8 +46,7 @@ def build_features(config_path):
             len(set(row.question1.split()).intersection(set(row.question2.split()))))
     df["len_common_words"] = len_common_words
 
-    df.to_csv(config["build_features"]
-              ["feature_dataset_path"], sep=",", index=False)
+    df.to_csv(feature_data_path, sep=",", index=False)
 
 
 if __name__ == '__main__':

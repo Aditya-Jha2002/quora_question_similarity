@@ -9,8 +9,10 @@ def load_dataset(config_path):
         raw data folder for further processing (saved in ../raw).
     """
     config = utils.read_params(config_path)
-    shutil.copy(config["data_source"]["labeled_source"],
-                config["load_dataset"]["raw_dataset_path"])
+    initial_data_path = config["data_source"]["labeled_source"]
+    raw_data_path = config["load_dataset"]["raw_dataset_path"]
+
+    shutil.copy(initial_data_path, raw_data_path)
 
 
 if __name__ == '__main__':
